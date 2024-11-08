@@ -1,16 +1,11 @@
 import express from 'express';
 import { ItemController } from './application/controller/item-controller';
-import { ItemRepositoryMemory } from './infra/repository/memory/item-repository-memory';
-import { TipoItemRepositoryMemory } from './infra/repository/memory/tipo-item-repository-memory';
 import { TipoItemController } from './application/controller/tipo-item-controller';
 import { PessoaController } from './application/controller/pessoa-controller';
-import { PessoaRepositoryMemory} from './infra/repository/memory/pessoa-repository-memory';
-import UsuarioRepositoryMemory from './infra/repository/memory/usuario-repository-memory';
 import { UsuarioController } from './application/controller/usuario-controller';
 import { EmprestimoController } from './application/controller/emprestimo-controller';
-import EmprestimoRepositoryMEmory from './infra/repository/memory/emprestimo-repository-memory';
 import { PostgresConnection } from './infra/config-database/postgres-connection';
-import { DatabaseRepositoryFactory } from './infra/config-database/database-repository-factory';
+import { MemoryRepositoryFactory } from './infra/config-database/memory-repository-factory';
 
 //chama librare
 const app = express();
@@ -47,7 +42,7 @@ console.log(dadosconexao)
 const connectionPostgreSQL = new PostgresConnection(
 dadosconexao
 );
-const repositoryFactory = new DatabaseRepositoryFactory(connectionPostgreSQL);
+const repositoryFactory = new MemoryRepositoryFactory();
 
 
 //==============Item==============

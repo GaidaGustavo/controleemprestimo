@@ -24,6 +24,7 @@ export class GetAllEmprestimosUseCase {
                     item: {
                         id: emprestimo.getItem().getID(),
                         nome: emprestimo.getItem().getName(),
+                        itemEPI: emprestimo.getItem().getItemEPI(),
                         tipoItem: {
                             id: emprestimo.getItem().getTipoItem().getID(),
                             nome: emprestimo.getItem().getTipoItem().getName(),

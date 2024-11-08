@@ -21,6 +21,7 @@ export class GetAllItensUseCase {
             {
                     id: item.getID(),
                     name: item.getName(),
+                    itemEPI: item.getItemEPI(),
                     tipoItem: {
                         id: item.getTipoItem().getID(),
                         name: item.getTipoItem().getName(),

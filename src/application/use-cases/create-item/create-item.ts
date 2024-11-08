@@ -17,7 +17,7 @@ export class CreateItemUseCase {
     async execute(input: CreateItemInput): Promise<CreateItemOutput> {
         const tipoItem = await this.tipoItemRepository.getById(input.tipoItemId)
         
-        const item = new Item(input.nome, tipoItem, input.id);
+        const item = new Item(input.nome, tipoItem, input.id, input.itemEPI);
 
         await this.itemRepository.create(item);
 

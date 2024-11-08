@@ -1,4 +1,4 @@
-import { ItemEPI } from "../value-object/item-epi";
+import { ItemEPI } from "./value-object/item-epi";
 import { TipoItem } from "./tipo-item";
 import { v4 } from 'uuid';
 

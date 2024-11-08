@@ -1,3 +1,5 @@
+import { ItemEPI } from "../../../domain/entity/value-object/item-epi";
+
 type tipoItem = {
     id: string | undefined;
     nome: string;
@@ -7,6 +9,7 @@ type item = {
     id: string | undefined;
     nome: string;
     tipoItem: tipoItem;
+    itemEPI: ItemEPI | undefined;
 }
 
 type usuario = {

@@ -17,6 +17,7 @@ export class GetItemByIdUseCase {
         const output: GetItemByIdOutput = {
                 id: item.getID(),
                 name: item.getName(),
+                itemEPI: item.getItemEPI(),
                 tipoItem: {
                     id: item.getTipoItem().getID(),
                     name: item.getTipoItem().getName(),

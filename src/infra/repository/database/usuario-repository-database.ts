@@ -45,6 +45,10 @@ export default class UsuarioRepositoryDatabase implements UsuarioRepository{
             from pessoas p 
             left join usuarios u on p.id = u.pessoa_id;
             `);
+            
+            if(!usuarioData){
+                throw new Error('Usuário não encontrado');
+            }
         
             const pessoa = new Pessoa(
                 usuarioData.nome_pessoa,

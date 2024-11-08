@@ -47,7 +47,7 @@ export default class ItemRepositoryDatabase implements ItemRepository{
         );
         
         if(!itemData){
-            throw new Error('TipoItem não encontrado');
+            throw new Error('Item não encontrado');
         }
 
         const tipoItem = new TipoItem(

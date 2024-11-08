@@ -82,6 +82,10 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
             where e.id = $1;`
             [id]
             );
+
+        if(!emprestimoData){
+            throw new Error('Empréstimo não encontrado');
+        }
     
             const pessoa = new Pessoa(
                 emprestimoData.pessoa_nome,

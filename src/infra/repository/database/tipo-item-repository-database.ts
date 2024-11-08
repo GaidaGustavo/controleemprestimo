@@ -28,7 +28,7 @@ export default class TipoItemRepositoryDatabase implements TipoItemRepository{
         );
         
         if(!tipoItemData){
-            throw new Error('Item não encontrado');
+            throw new Error('TipoItem não encontrado');
         }
 
         return new TipoItem(tipoItemData.nome, tipoItemData.id);

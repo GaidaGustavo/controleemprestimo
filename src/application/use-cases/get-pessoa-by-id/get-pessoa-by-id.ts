@@ -17,6 +17,7 @@ export class GetPessoaByIdUseCase {
         const output: GetPessoaByIdOutput = {
             id: pessoa.getID(),
             nome: pessoa.getName(),
+            documento: pessoa.getDocumento()
         }
         return output;
     }

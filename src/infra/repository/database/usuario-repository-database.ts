@@ -39,7 +39,7 @@ export default class UsuarioRepositoryDatabase implements UsuarioRepository{
 
     async getById(id: string): Promise<Usuario> {
     
-        const usuarioData = await this.connection.execute(`
+        const [ usuarioData ] = await this.connection.execute(`
             select p.id as pessoa_id, p.nome as pessoa_nome, p.documento as pessoa_documento, 
             u.id as usuario_id, u.nome_usuario as usuario_nome_usuario, u.senha as usuario_senha 
             from pessoas p 

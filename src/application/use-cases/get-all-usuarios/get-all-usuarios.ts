@@ -25,6 +25,7 @@ export class GetAllUsuariosUseCase {
                     pessoa: {
                         id: usuario.getPessoa().getID(),
                         nome: usuario.getPessoa().getName(),
+                        documento: usuario.getPessoa().getDocumento()
                     },
                     
             }

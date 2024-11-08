@@ -1,4 +1,4 @@
-import { TipoItem } from "../../../domain/entity/tipoitem";
+import { TipoItem } from "../../../domain/entity/tipo-item";
 import { RepositoryFactory } from "../../../domain/repository/repository-factory";
 import { TipoItemRepository } from "../../../domain/repository/tipoitem-repository";
 import { UpdateTipoItemInput } from "./update-tipo-item-input";

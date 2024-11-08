@@ -1,5 +1,5 @@
 import { Item } from "../../../domain/entity/item";
-import { TipoItem } from "../../../domain/entity/tipoitem";
+import { TipoItem } from "../../../domain/entity/tipo-item";
 import { ItemRepository } from "../../../domain/repository/item-repository";
 import { Connection } from "../../config-database/connection";
 

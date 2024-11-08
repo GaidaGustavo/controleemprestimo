@@ -12,7 +12,7 @@ export class CreatePessoaUseCase {
     }
     
     async execute(input: CreatePessoaInput): Promise<CreatePessoaOutput> {
-        const pessoa = new Pessoa(input.nome, input.id)
+        const pessoa = new Pessoa(input.nome, input.documento, input.id)
         await this.pessoaRepository.create(pessoa)
         return {}
     }

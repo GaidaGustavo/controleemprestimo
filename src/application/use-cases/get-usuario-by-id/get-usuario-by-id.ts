@@ -22,6 +22,7 @@ export class GetUsuarioByIdUseCase {
             pessoa: {
                 id: usuario.getPessoa().getID(),
                 nome: usuario.getPessoa().getName(),
+                documento: usuario.getPessoa().getDocumento()
             },
           
 

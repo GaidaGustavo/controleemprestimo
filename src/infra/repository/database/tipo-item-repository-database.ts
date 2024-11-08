@@ -1,4 +1,4 @@
-import { TipoItem } from "../../../domain/entity/tipoitem";
+import { TipoItem } from "../../../domain/entity/tipo-item";
 import { TipoItemRepository } from "../../../domain/repository/tipoitem-repository";
 import { Connection } from "../../config-database/connection";
 
@@ -11,8 +11,8 @@ export default class TipoItemRepositoryDatabase implements TipoItemRepository{
         const output: TipoItem[] = [];
         const tipoItemData = await this.connection.execute(`select id, nome from tipos_item`);
 
-        for (const itemTypeData of tipoItemData) {
-            output.push(new TipoItem(tipoItemData.nome, tipoItemData.id));
+        for (const tipoItem of tipoItemData) {
+            output.push(new TipoItem(tipoItem.nome, tipoItem.id));
         }
         return output;
     }

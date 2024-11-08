@@ -1,7 +1,7 @@
 import { Emprestimo } from "../../../domain/entity/emprestimo";
 import { Item } from "../../../domain/entity/item";
 import { Pessoa } from "../../../domain/entity/pessoa";
-import { TipoItem } from "../../../domain/entity/tipoitem";
+import { TipoItem } from "../../../domain/entity/tipo-item";
 import { Usuario } from "../../../domain/entity/usuario";
 import { EmprestimoRepository } from "../../../domain/repository/emprestimo-repository";
 import { Connection } from "../../config-database/connection";
@@ -28,9 +28,9 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
     
         for (const emprestimoData of emprestimosData) {
             const pessoa = new Pessoa(
-                emprestimoData.nome,
-                emprestimoData.documento,
-                emprestimoData.id
+                emprestimoData.pessoa_nome,
+                emprestimoData.pessoa_documento,
+                emprestimoData.id_pessoa
         )
     
             const usuario = new Usuario(
@@ -52,10 +52,10 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
     
             const emprestimo = new Emprestimo(
                 item,
+                pessoa,
+                usuario,
                 emprestimoData.data_emprestimo,
                 emprestimoData.data_devolucao,
-                pessoa,
-                usuario
             );
     
             output.push(emprestimo);
@@ -68,7 +68,7 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
 
     async getById(id: string): Promise<Emprestimo> {
 
-        const emprestimoData = await this.connection.execute(`
+        const [ emprestimoData ] = await this.connection.execute(`
             select e.id as emprestimo_id, e.data_emprestimo, e.data_devolucao,
             p.id as pessoa_id, p.nome as pessoa_nome, p.documento as pessoa_documento,
             u.id as usuario_id, u.nome_usuario as usuario_nome_usuario,
@@ -84,9 +84,9 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
             );
     
             const pessoa = new Pessoa(
-                emprestimoData.nome,
-                emprestimoData.documento,
-                emprestimoData.id
+                emprestimoData.pessoa_nome,
+                emprestimoData.pessoa_documento,
+                emprestimoData.pessoa_id
         )
     
             const usuario = new Usuario(
@@ -108,10 +108,10 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
     
             const emprestimo = new Emprestimo(
                 item,
+                pessoa,
+                usuario,
                 emprestimoData.data_emprestimo,
                 emprestimoData.data_devolucao,
-                pessoa,
-                usuario
             );
     
         return emprestimo;
@@ -140,7 +140,7 @@ export default class EmprestimoRepositoryDatabase implements EmprestimoRepositor
             `,
             [emprestimo.getPessoa().getID(), emprestimo.getUsuario().getID(),
             emprestimo.getItem().getID, emprestimo.getdataEmprestimo,
-            emprestimo.getdataDevolucao], emprestimo.getID);        
+            emprestimo.getdataDevolucao, emprestimo.getID]);        
     }
 
     async delete(id: string): Promise<void> {

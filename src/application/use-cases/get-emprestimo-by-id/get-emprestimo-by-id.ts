@@ -29,6 +29,7 @@ export class GetEmprestimoByIdUseCase {
             pessoa: {
                 id: emprestimo.getPessoa().getID(),
                 nome: emprestimo.getPessoa().getName(),
+                documento: emprestimo.getPessoa().getDocumento(),
             },
             usuario: {
                 id: emprestimo.getUsuario().getID(),
@@ -36,7 +37,8 @@ export class GetEmprestimoByIdUseCase {
                 senha: emprestimo.getUsuario().getSenha(),
                 pessoa: {
                     id: emprestimo.getUsuario().getPessoa().getID(),
-                    nome: emprestimo.getUsuario().getPessoa().getName()
+                    nome: emprestimo.getUsuario().getPessoa().getName(),
+                    documento: emprestimo.getUsuario().getPessoa().getDocumento()
                 }
             }
         }
